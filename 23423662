@@ -1,0 +1,71 @@
+using System;
+abstract class IShape
+{
+    public static int getParcount() { return 0; }
+    public abstract double getArea();
+}
+
+class Rect : IShape
+{
+    private double a, b;
+    public Rect(double[] p) { a = p[0]; b = p[1]; }
+    public static int getParCount() { return 2; }
+
+    public override double getArea()
+    {
+        return a * b;
+    }
+    class Circle : IShape
+    {
+        private double a, b;
+        public Circle(double[] p) { a = p[0]; b = p[1]; }
+        public static int getParCount() { return 2; }
+
+        public override double getArea()
+        {
+            return 3.14 * b * b;
+        }
+
+
+        class Triangle : IShape
+        {
+            private double a, b,c;
+            public Triangle(double[] p) { a = p[0]; b = p[1]; c = p[2]; }
+            public static int getParCount() { return 3; }
+
+            public override double getArea(){
+                double p = (a + b + c) / 2;
+            return (Math.Sqrt(p*(p-a)*(p-b)*(p-c)));}
+
+            class Square : IShape
+            {
+                private double a;
+                public Square(double[] p) { a = p[0]; }
+                public static int getParCount() { return 1; }
+
+                public override double getArea()
+                {
+                    return a * a;
+                }
+
+                class Hexagon : IShape
+                {
+                    private double a, b,c;
+                    public Hexagon(double[] p) { a = p[0]; b = p[1]; c = p[2]; }
+                    public static int getParCount() { return 3; }
+
+                    public override double getArea()
+                    {
+                        double p = (a + b + c) / 2;
+                        return (Math.Sqrt(p * (p - a) * (p - b) * (p - c))) * 6;
+                    }
+                }
+            }
+        }
+    }
+}
+
+class MainClass{
+    public static void Main (string [] args){
+        Console. WriteLine("Площадь какой фигуры выхотите узнать ? Введите 1 если прямоугольник ,введите 2 если круг , введите 3 если треугольник, введите 4 если квадрат, введите 5 если правильный шестиугольник");
+
